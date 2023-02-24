@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <script type="text/babel">
+        const rootElement = document.querySelector("#root");
+        const Message2 = ({ num, selected })=> {
+             return selected ?<h1>{num}</h1>: <h3>{num}</h3>;
+      };
+
+/* text가 대문자, 소문자  */
+
+      const element = (
+        <>
+        {/* 여긴 JSX 땅임 - 주석 주의 key 값은 반드시 unique 해야 함 */}
+        {/* javaxcript 의 복잡한 연산을 element를 사용하는 곳에서 사용가능 */}
+        {/* 왜냐면 js와 jsx 섞어쓰기가 가능하니까 */}
+            {[1,2,3,4,5,6,7,8,9,10].map(num=>(
+        //여긴 jsx 땅임 - key 값은 반드시 unique 해야함
+              <Message2 key={num} num = {num} selected={num%3===0}/>
+
+            ))
+
+            }
+        </>
+      );
+      ReactDOM.createRoot(rootElement).render(element);
+    </script>
+  </body>
+</html>

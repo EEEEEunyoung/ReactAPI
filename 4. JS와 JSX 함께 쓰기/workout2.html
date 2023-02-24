@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="./hi.css">
+    <style>
+      .hi{
+
+
+      }
+
+      .item{
+
+        
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <script type="text/babel">
+        const rootElement = document.querySelector("#root");
+        const WorkoutList = ({ props })=> {
+          const [items, setItems] = React.useState([
+        { id: 1, name: "벤치프레스", count: 0 },
+        { id: 2, name: "렛풀다운", count: 0 },
+        { id: 3, name: "스쿼트", count: 0 },
+          ]);
+            return (
+              <>
+              <ul className="hi" style={{color: 'blue'}}>
+                {
+items.map(item=>(
+<WorkoutItem key={item.id} item={item}/>
+))
+}
+              </ul>
+              </>
+        )
+      };
+
+/* text가 대문자, 소문자  */
+      const WorkoutItem=(props)=>{
+        console.log(props);
+        const item=props.item;
+        return(
+        <>
+        <li key={item.id} className="item" onClick={()=>{let a=[WorkoutList]; a.count=item.count++;setItems(a.count)}}>{item.name}({item.count}회)</li>
+        </>
+        )
+      }
+
+
+
+ 
+      const element = (
+        <>
+        <WorkoutList />
+        </>
+      );
+      ReactDOM.createRoot(rootElement).render(element);
+    </script>
+  </body>
+</html>
